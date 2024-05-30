@@ -4,7 +4,7 @@ $usuario = $_POST['Usuario'];
 $contrasenia = $_POST['Contrasena']; 
 
 
-$query = "INSERT INTO contactos (Usuario, Contrasena) VALUES ('$usuario','$contrasenia')"; 
+$query = "INSERT INTO control1 (Usuario, Contrasena) VALUES ('$usuario','$contrasenia')"; 
 
 $resultado = $conexion->query($query);
 
