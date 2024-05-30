@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Conexion BD</title>
+    <script>
+        function buscar() {
+            var input, filter, table, tr, td, i, j, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("tablaLibros");
+
+            // Petición AJAX
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    table.innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "buscar.php?q=" + filter, true);
+            xmlhttp.send();
+        }
+    </script>
+       <link rel="stylesheet" href="stayc.css">
+</head>
+<body id = "bbody">
+    <center>
+        <form method="post" action="guardar.php">
+            <br>
+            <br>
+            <h1> REGISTRO DE LIBROS </h1>
+            Ingrese el autor de la obra:
+            <input type="text" REQUIRED name="Usuario" placeholder="Usuario">
+            <br>
+            <br>
+            Ingrese la Materia:
+            <input type="text" REQUIRED name="Contrasena" placeholder="Contrasena">
+            <br>
+            <br>
+            Ingrese el Nombre:
+            <input type="text" REQUIRED name="Nombre" placeholder="Nombre">
+            <br>
+            <br>
+            Ingrese las Paginas:
+            <input type="text" REQUIRED name="Paginas" placeholder="Paginas">
+            <br>
+            Ingrese el año del libro :
+            <input type="text" REQUIRED name="Fecha" placeholder="Fecha">
+            <br>
+            <br>
+            <input type="submit" value="Guardar">
+        
+            <a href="tabla0.php"> Ver tabla </a>
+            <a href="tabla.php"> Prestamos </a>
+    
+        </form>
+        <br>
+        <input type="text" id="searchInput" onkeyup="buscar()" placeholder="Buscar...">
+        <button onclick="buscar()">Buscar</button>
+        <br>
+        <br>
+        <table id="tablaLibros" border="1">
+            <tr>
+                <th>ID</th>
+                <th>Autor</th>
+                <th>Materia</th>
+                <th>Nombre</th>
+                <th>Paginas</th>
+                <th>Fecha</th>
+            </tr>
+          
+        </table>
+    </center>
+    <form action=""> 
+    </form>
+</body>
+</html>
+	
+
